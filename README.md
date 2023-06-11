@@ -96,7 +96,7 @@ N.B.
   * "+" below designate a concatenation operation or the application of BASE58 or HASH160 algorithm
   * "0x14" correspond the the length in bytes of HASH160 result: 160 bits / 8 bits = 20 bytes = 0x14
 
-### Without witness
+### Without witness : With Pubkey Hash
 
 ![Transaction without Witness](transactionWithoutWitness.png)
 
@@ -107,7 +107,7 @@ graph TD;
     P(pkscript)-->|+ P2PKH + BASE58| A
 ```
 
-### With witness
+### With witness : With Script Hash
 
 ![Transaction with Witness](transactionWithWitness.png)
 
