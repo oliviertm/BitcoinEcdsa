@@ -93,4 +93,6 @@ if __name__ == "__main__":
     pubKeyFromWitness = P2WPKHwitnessVersionByte + keyHashLen + hash160(witness) 
     addrFromWitness = base58( P2SHversionByte+ hash160( pubKeyFromWitness ) )
     print(f'base58 of hash160 of pubKey from witness :\n {addrFromWitness} \n validates address :\n {addr}\n = {addrFromWitness==addr}')
- 
+    print(f'Hash160 of witness with 0x14 and P2WPKH  match sigscript :\n{pubKeyFromWitness==sigscript}')
+
+    print(f'base58 and P2SH of pkscript :\n {base58(P2SHversionByte+pkscript)} \n validates address :\n {addr}\n = {base58(P2SHversionByte+pkscript)==addr}')
