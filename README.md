@@ -20,7 +20,7 @@ If you speak French, I also wrote an [article](https://olivierrt.wordpress.com/2
 Bitcoin keys and address generator is intended to provide python code corresponding to the following transformations:
 
 ```mermaid
-graph LR;
+graph TD;
     PVK(Private Key)-->|scalar multiplication by G point of ECDSA standard| PBK(Public Key);
     PBK-->|SHA256 + RIPEMD160 + 00 header + checksum| PBK256(Address);
 ```
@@ -88,25 +88,31 @@ As bitcoin transactions are defined in bitcoin script, their implementation can 
 Here are two of these cases (which are very common):
 
 N.B.
-  * "pkscript" and "sigscript" in the diagrams below don't designate the actual scripts, but the main value provided in them.
+  * "pkscript" in the diagrams below don't designate the actual script, but the main value provided in it.
+  * "sigscript" in the diagrams below designate the second value contains in it, or the only value in it if there is only one.
   * P2PKH, P2SH and P2WPKH below designated respective version bytes : 0x00, 0x05 and 0x00, see [Addresses prefixes](https://en.bitcoin.it/wiki/List_of_address_prefixes) and [BIP141](https://en.bitcoin.it/wiki/BIP_0141)
   * BASE58 below designate [base58](https://en.bitcoin.it/wiki/base58_encoding) encoding and concatenation of a checksum
   * HASH160 below designate SHA256 hashing on which RIPEMD160 hashing has been applied 
   * "+" below designate a concatenation operation or the application of BASE58 or HASH160 algorithm
+  * "0x14" correspond the the length in bytes of HASH160 result: 160 bits / 8 bits = 20 bytes = 0x14
 
 ### Without witness
 
+![Transaction without Witness](transactionWithoutWitness.png)
+
 ```mermaid
-graph LR;
+graph TD;
     S(sigscript)-->|+ HASH160 + P2PKH + BASE58| A(Address);
     S -->|+ HASH160| P(pkscript);
     P(pkscript)-->|+ P2PKH + BASE58| A
 ```
 
-### Without witness
+### With witness
+
+![Transaction with Witness](transactionWithWitness.png)
 
 ```mermaid
-graph LR;
+graph TD;
     S(sigscript)-->|+ HASH160 + P2SH + BASE58| A(Address);
     S -->|+ HASH160| P(pkscript);
     P(pkscript)-->|+ P2PKH + BASE58| A
