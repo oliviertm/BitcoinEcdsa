@@ -104,7 +104,7 @@ N.B.
 graph TD;
     S(sigscript)-->|+ HASH160 + P2PKH + BASE58| A(Address);
     S -->|+ HASH160| P(pkscript);
-    P(pkscript)-->|+ P2PKH + BASE58| A
+    P(pkscript)<-->|+ P2PKH + BASE58| A
 ```
 
 ### With witness : With Script Hash
@@ -115,7 +115,7 @@ graph TD;
 graph TD;
     S(sigscript)-->|+ HASH160 + P2SH + BASE58| A(Address);
     S -->|+ HASH160| P(pkscript);
-    P(pkscript)-->|+ P2SH + BASE58| A
+    P(pkscript)<-->|+ P2SH + BASE58| A
     W(witness)-->|+ HASH160 + 0x14 + P2WPKH| S;
     W(witness)-->|+ HASH160 + 0x14 + P2WPKH + HASH160+ P2SH + BASE58| A(Address);
 ```
