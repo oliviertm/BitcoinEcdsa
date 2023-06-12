@@ -90,7 +90,7 @@ Here are two of these cases (which are very common):
 N.B.
   * "pkscript" in the diagrams below don't designate the actual script, but the main value provided in it.
   * "sigscript" in the diagrams below designate the second value contains in it, or the only value in it if there is only one.
-  * P2PKH, P2SH and P2WPKH below designated respective version bytes : 0x00, 0x05 and 0x00, see [Addresses prefixes](https://en.bitcoin.it/wiki/List_of_address_prefixes) and [BIP141](https://en.bitcoin.it/wiki/BIP_0141)
+  * P2PKH, P2SH and P2WPKH below designated respective version bytes : 0x00, 0x05 and 0x00, see [Addresses types](https://unchained.com/blog/bitcoin-address-types-compared/)
   * BASE58 below designate [base58](https://en.bitcoin.it/wiki/base58_encoding) encoding and concatenation of a checksum
   * HASH160 below designate SHA256 hashing on which RIPEMD160 hashing has been applied 
   * "+" below designate a concatenation operation or the application of BASE58 or HASH160 algorithm
