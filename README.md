@@ -21,7 +21,7 @@ Bitcoin keys and address generator is intended to provide python code correspond
 
 ```mermaid
 graph TD;
-    PVK(Private Key)-->|scalar multiplication by G point of ECDSA standard| PBK(Public Key);
+    PVK(Private Key)-->|x G point of ECDSA curve| PBK(Public Key);
     PBK-->|SHA256 + RIPEMD160 + 00 header + checksum| PBK256(Address);
 ```
 
@@ -102,9 +102,9 @@ N.B.
 
 ```mermaid
 graph TD;
-    S(sigscript)-->|+ HASH160 + P2PKH + BASE58| A(Address);
-    S -->|+ HASH160| P(pkscript);
-    P(pkscript)<-->|+ P2PKH + BASE58| A
+    S(sigscript)-->|HASH160 + P2PKH + BASE58| A(Address);
+    S -->|HASH160| P(pkscript);
+    P(pkscript)<-->|P2PKH + BASE58| A
 ```
 
 ### With witness : With Script Hash
@@ -113,11 +113,11 @@ graph TD;
 
 ```mermaid
 graph TD;
-    S(sigscript)-->|+ HASH160 + P2SH + BASE58| A(Address);
-    S -->|+ HASH160| P(pkscript);
-    P(pkscript)<-->|+ P2SH + BASE58| A
-    W(witness)-->|+ HASH160 + 0x14 + P2WPKH| S;
-    W(witness)-->|+ HASH160 + 0x14 + P2WPKH + HASH160+ P2SH + BASE58| A(Address);
+    S(sigscript)-->|HASH160 + P2SH + BASE58| A(Address);
+    S -->|HASH160| P(pkscript);
+    P(pkscript)<-->|P2SH + BASE58| A
+    W(witness)-->|HASH160 + 0x14 + P2WPKH| S;
+    W(witness)-->|HASH160 + 0x14 + P2WPKH + HASH160 + P2SH + BASE58| A(Address);
 ```
 
 ### Code output 
